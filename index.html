@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+  
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' /> <!-- prevent zoom on mobile devices -->
+  
+		<title>Soundboard</title>
+		<description>A simple HTML5 soundboard (https://github.com/seeseekey/Soundboard)</description>
+		
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script src="libs/jquery-3.1.1.min.js"></script>
+		<script src="libs/howler.js"></script>
+
+		<script src="src/player.js"></script>
+
+		<script src="src/controller.js"></script>
+	</head>
+	<body>
+		<div id="pane">
+		</div>
+		
+	    <script>		
+			$( document ).ready(function() {
+		   		// Handler for .ready() called.
+		   		var controller = new Controller();
+				controller.setup();
+			});	
+	    </script>
+	</body>
+</html>
