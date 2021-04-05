@@ -18,7 +18,7 @@ to start it. Nginx can be used as a websocket reverse proxy:
 
 ```
 server {
-		...
+	...
 
         location /soundboard/ {
                proxy_pass http://localhost:8000/;
