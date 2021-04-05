@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<!-- prevent zoom on mobile devices -->
+
+	<title>Soundboard - Broadcast</title>
+
+	<link rel="stylesheet" type="text/css" href="../style.css">
+
+	<script src="../libs/jquery-3.6.0.min.js"></script>
+	<script src="../libs/howler.min.js"></script>
+
+	<script src="../src/player.js"></script>
+</head>
+<body>
+	<div id="controls">
+		<div class='soundboardButton'>
+			Main volume:<br>
+			<input id="slider-main-volume" type="range" min="0" max="1" step="0.01" value="1">
+		</div>
+	</div>
+
+	<div id="pane">
+	</div>
+
+	<div id="footer">
+		<div id="connection">(disconnected)</div>
+		<a href="https://github.com/seeseekey/Soundboard">a simple HTML5 soundboard</a>
+		<a href="https://seeseekey.net">by seeseekey</a>
+	</div>
+
+	<script>
+
+		function setup() {
+
+			// Load board configurations from json
+			var request = new XMLHttpRequest();
+			request.open('GET', '../boards.json', true);
+
+			request.onload = function () {
+				if (request.status >= 200 && request.status < 400) { // Success!
+
+					console.log("Read JSON");
+					var data = JSON.parse(request.responseText);
+
+					// Read settings
+					connect(data.settings.broadcasturl);
+
+				} else { // We reached our target server, but it returned an error
+					console.log("Something went wrong on our end. Please try again.");
+				}
+			}.bind(this);
+
+			request.onerror = function () { // There was a connection error of some sort
+				console.log("Can't establish connection.");
+			};
+
+			request.send();
+		}
+
+		function connect(broadcastUrl) {
+
+			let socket = new WebSocket(broadcastUrl);
+
+			socket.onopen = function (evt) {
+				console.log(evt);
+				$("#connection").html("(connected)");
+			};
+
+			socket.onerror = function (evt) {
+				console.log(evt);
+				socket.close();
+			};
+
+			socket.onclose = function (evt) {
+				console.log(evt); $("#connection").html("(disconnected)");
+				setTimeout(function () { connect(broadcastUrl); }, 1000);
+			};
+
+			// log new messages to console
+			socket.onmessage = (msg) => {
+
+				let response = JSON.parse(msg.data);
+
+				if (player[response.url] == undefined) {
+					player[response.url] = new Player(response.url);
+					player[response.url].loop(response.loop);
+					player[response.url].volume(response.volume);
+
+					var mainVolumeLevel = $("#slider-main-volume").val();
+					player[response.url].mainVolume(mainVolumeLevel);
+				}
+
+				var currentPlayer = player[response.url];
+
+				switch (response.action) {
+					case "play":
+						currentPlayer.play();
+						break;
+					case "stop":
+						currentPlayer.stop();
+						break;
+					case "loop":
+						currentPlayer.loop(response.loop);
+						break;
+					case "volume":
+						currentPlayer.loop(response.volume);
+						break;
+					default:
+						console.log("Unknown action " + response.action);
+				}
+
+				console.log(response);
+			};
+		}
+
+		$(document).ready(function () {
+
+			player = [];
+
+			$("#slider-main-volume").on('input', '', function () {
+
+				var mainVolumeLevel = $("#slider-main-volume").val();
+				console.log("Main volume level: " + mainVolumeLevel);
+
+				for(var index in player) {
+					player[index].mainVolume(mainVolumeLevel);
+				}
+
+			});
+
+			setup();
+		});
+	</script>
+</body>
+</html>

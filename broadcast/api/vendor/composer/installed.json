@@ -1,0 +1,58 @@
+{
+    "packages": [
+        {
+            "name": "bloatless/php-websocket",
+            "version": "v3.0.0",
+            "version_normalized": "3.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bloatless/php-websocket.git",
+                "reference": "3b2649e26fece03057bcfc7a0c3dbdf1af116995"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bloatless/php-websocket/zipball/3b2649e26fece03057bcfc7a0c3dbdf1af116995",
+                "reference": "3b2649e26fece03057bcfc7a0c3dbdf1af116995",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-sockets": "*",
+                "php": "^7.4|^8.0"
+            },
+            "time": "2021-01-12T18:25:32+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Bloatless\\WebSocket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Samtleben",
+                    "email": "simon@bloatless.org"
+                }
+            ],
+            "description": "A simple WebSocket Server and Client implementation in PHP.",
+            "homepage": "https://bloatless.org",
+            "keywords": [
+                "WebSockets",
+                "bloatless",
+                "php",
+                "websocket-server"
+            ],
+            "support": {
+                "issues": "https://github.com/bloatless/php-websocket/issues",
+                "source": "https://github.com/bloatless/php-websocket/tree/v3.0.0"
+            },
+            "install-path": "../bloatless/php-websocket"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

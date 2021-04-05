@@ -1,4 +1,9 @@
 { 
+	"settings": {
+        "activeboard": 0,
+		"broadcast": false,
+		"broadcasturl": "wss://example.com/soundboard/transceiver"
+	},
 	"boards" : [
     {
         "name" : "Soundboard example",

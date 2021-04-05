@@ -6,6 +6,10 @@ var PlayerStatus = {
 class Player {
 
     constructor(filename) {
+
+        this.mainVolumeValue = 1;
+        this.volumeValue = 1;
+
         this.status = PlayerStatus.Stop;
 
         this.filename = filename;
@@ -29,11 +33,17 @@ class Player {
         this.sound.loop(loop);
     }
 
-    volume(volume) {
-        this.sound.volume(volume);
+    mainVolume(mainVolume) {
+        this.mainVolumeValue = mainVolume;
+        this.volume(this.volumeValue)
     }
 
-    switch () {
+    volume(volume) {
+        this.volumeValue = volume;
+        this.sound.volume(volume * this.mainVolumeValue);
+    }
+
+    switch() {
         if (this.status == PlayerStatus.Play) {
             this.stop();
         } else {
@@ -55,5 +65,9 @@ class Player {
 
     get Loop() {
         return this.sound.loop();
+    }
+
+    get Volume() {
+        return this.sound.volume();
     }
 }

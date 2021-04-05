@@ -7,21 +7,32 @@
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' /> <!-- prevent zoom on mobile devices -->
   
 		<title>Soundboard</title>
-		<description>A simple HTML5 soundboard (https://github.com/seeseekey/Soundboard)</description>
 		
 		<link rel="stylesheet" type="text/css" href="style.css">
 
-		<script src="libs/jquery-3.1.1.min.js"></script>
-		<script src="libs/howler.js"></script>
+		<script src="libs/jquery-3.6.0.min.js"></script>
+		<script src="libs/howler.min.js"></script>
 
 		<script src="src/player.js"></script>
-
 		<script src="src/controller.js"></script>
 	</head>
 	<body>
+		<div id="controls">
+			<div class='soundboardButton'>
+				Main volume:<br>
+				<input id="slider-main-volume" type="range" min="0" max="1" step="0.01" value="1">
+			</div>
+		</div>
+
 		<div id="pane">
 		</div>
 		
+		<div id="footer">
+			<div id="connection">(disconnected)</div>
+			<a href="https://github.com/seeseekey/Soundboard">a simple HTML5 soundboard</a>
+			<a href="https://seeseekey.net">by seeseekey</a>
+		</div>
+
 	    <script>		
 			$( document ).ready(function() {
 		   		// Handler for .ready() called.
