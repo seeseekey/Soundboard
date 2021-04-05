@@ -1,57 +1,55 @@
-{ 
-	"settings": {
-        "activeboard": 0,
-		"broadcast": false,
-		"broadcasturl": "wss://example.com/soundboard/transceiver"
-	},
-	"boards" : [
-    {
-        "name" : "Soundboard example",
-		"folder" : "assets/",
-        "sounds" : [
+{
+   "settings":{
+      "activeboard":0,
+      "broadcast":false,
+      "broadcasturl":"wss://example.com/soundboard/transceiver"
+   },
+   "boards":[
+      {
+         "name":"Soundboard example",
+         "folder":"assets/",
+         "sounds":[
             {
-				"file": "music1.ogg",
-                "description" : "Action Music 1",
-				"category": "Music / 3rd Party"
+               "file":"music1.ogg",
+               "description":"Action Music 1",
+               "category":"Music / 3rd Party"
             },
             {
-				"file": "music2.ogg",
-                "description" : "Drama Music 2",
-				"category": "Music / 3rd Party"
+               "file":"music2.ogg",
+               "description":"Drama Music 2",
+               "category":"Music / 3rd Party"
             },
             {
-				"file": "music3.ogg",
-                "description" : "Suspense Music 3",
-				"category": "Music / 3rd Party"
+               "file":"music3.ogg",
+               "description":"Suspense Music 3",
+               "category":"Music / 3rd Party"
             },
             {
-				"file": "medical.mp3",
-                "description" : "Medical",
-				"category": "Ambience / 3rd Party"
+               "file":"medical.mp3",
+               "description":"Medical",
+               "category":"Ambience / 3rd Party"
             },
             {
-				"file": "bridge.mp3",
-                "description" : "Bridge",
-				"category": "Ambience / 3rd Party"
+               "file":"bridge.mp3",
+               "description":"Bridge",
+               "category":"Ambience / 3rd Party"
             },
             {
-				"file": "intro.ogg",
-                "description" : "Intro",
-				"category": "Music / 3rd Party"
-
+               "file":"intro.ogg",
+               "description":"Intro",
+               "category":"Music / 3rd Party"
             },
             {
-				"file": "deck4.ogg",
-                "description" : "Deck 4",
-				"category": "SFX / 3rd Party"
-
+               "file":"deck4.ogg",
+               "description":"Deck 4",
+               "category":"SFX / 3rd Party"
             },
             {
-				"file": "alarm1.ogg",
-                "description" : "Alarm 1",
-				"category": "SFX / 3rd Party"
+               "file":"alarm1.ogg",
+               "description":"Alarm 1",
+               "category":"SFX / 3rd Party"
             }
-        ]
-    }
-]}
-
+         ]
+      }
+   ]
+}
