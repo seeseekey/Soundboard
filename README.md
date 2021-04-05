@@ -16,7 +16,8 @@ The corresponding websocket server can be found in the broadcast/api directory. 
 
 to start it. Nginx can be used as a websocket reverse proxy:
 
-```server {
+```
+server {
 		...
 
         location /soundboard/ {
@@ -26,7 +27,8 @@ to start it. Nginx can be used as a websocket reverse proxy:
                proxy_set_header Connection "Upgrade";
                proxy_set_header Host $host;
         }
-}```
+}
+```
 
 The broadcast receiver should use the index.html in the broadcast folder in the browser
 
